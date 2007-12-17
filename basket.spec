@@ -16,7 +16,6 @@ Source1:        cr16-app-basket.png
 Source2:	cr32-app-basket.png
 Source3:	cr48-app-basket.png
 Group:		Office
-BuildRoot:      %{_tmppath}/%{name}-buildroot
 License:	GPL
 BuildRequires:  kdelibs-devel
 BuildRequires:  libkdepim-kontact-devel
