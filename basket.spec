@@ -1,7 +1,7 @@
 %define name           basket
 %define longtitle      BasKet for KDE
 %define version        1.0.2
-%define release        %mkrel 1
+%define release        %mkrel 2
 
 
 Name:           %name
@@ -12,6 +12,8 @@ URL:           	http://basket.kde.org/
 Source0:        %{name}-%{version}.tar.bz2
 Patch2:         basket-1.0Beta3-fix-compile.patch 
 Patch3:		basket-1.0-fix-crash.patch
+Patch4:		basket-1.0.2.kontact-plugin.patch
+
 Source1:        cr16-app-basket.png
 Source2:	cr32-app-basket.png
 Source3:	cr48-app-basket.png
@@ -19,7 +21,6 @@ Group:		Office
 BuildRoot:      %{_tmppath}/%{name}-buildroot
 License:	GPL
 BuildRequires:  kdelibs-devel
-BuildRequires:  libkdepim-kontact-devel
 BuildRequires:  kdepim-devel
 BuildRequires:  desktop-file-utils
 Requires:	kdebase-progs >= 3.0
@@ -113,6 +114,7 @@ rm -rf %buildroot
 %setup -q -n %{name}-%{version}
 %patch2 -p0
 %patch3 -p1 -b .fix_crash
+%patch4 -p0
 
 %build
 make -f Makefile.cvs
