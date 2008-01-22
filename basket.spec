@@ -13,6 +13,7 @@ Source0:        %{name}-%{version}.tar.bz2
 Patch2:         basket-1.0Beta3-fix-compile.patch 
 Patch3:		basket-1.0-fix-crash.patch
 Patch4:		basket-1.0.2.kontact-plugin.patch
+Patch5: 	basket-1.0.2.fix-automake.patch
 
 Source1:        cr16-app-basket.png
 Source2:	cr32-app-basket.png
@@ -111,6 +112,7 @@ rm -rf %buildroot
 %patch2 -p0
 %patch3 -p1 -b .fix_crash
 %patch4 -p0
+%patch5 -p0
 
 %build
 make -f Makefile.cvs
