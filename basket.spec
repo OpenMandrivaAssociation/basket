@@ -41,15 +41,11 @@ baskets to HTML.
 
 %post
 %update_menus
-%if %mdkversion > 200600
 %update_icon_cache crystalsvg
-%endif
 
 %postun
 %clean_menus
-%if %mdkversion > 200600
 %clean_icon_cache crystalsvg
-%endif
 
 
 %files -f %{name}.lang
