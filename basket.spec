@@ -40,13 +40,17 @@ It is also useful to collect informations for a report.
 Those data can be shared with co-workers by exporting 
 baskets to HTML.
 
+%if %mdkversion < 200900
 %post
 %update_menus
 %update_icon_cache crystalsvg
+%endif
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
 %clean_icon_cache crystalsvg
+%endif
 
 
 %files -f %{name}.lang
