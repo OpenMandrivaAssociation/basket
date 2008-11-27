@@ -24,7 +24,7 @@ BuildRequires:  kdepim4-devel
 BuildRequires:  kdepimlibs4-devel
 BuildRequires:  qimageblitz-devel
 BuildRequires:  desktop-file-utils
-Requires:	kdebase-progs >= 3.0
+Requires:	    kdebase4-runtime
 
 %description
 This application is mainly an all-purpose notes taker. 
@@ -42,12 +42,13 @@ baskets to HTML.
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%{_bindir}/%{name}
-%{_datadir}/apps/%{name}
-%{_datadir}/applications/kde4/%{name}.desktop
-%{_datadir}/kde4/services/*.desktop
-%{_iconsdir}/*/*/*/*
+%{_kde_bindir}/%{name}
+%{_kde_datadir}/apps/%{name}
+%{_kde_datadir}/applications/kde4/%{name}.desktop
+%{_kde_datadir}/kde4/services/*.desktop
+%{_kde_iconsdir}/*/*/*/*
 
+#--------------------------------------------------------------------
 
 %package -n %{libname}
 Summary: Library files for %{name}
@@ -57,7 +58,7 @@ Group:		Office
 Library files for %{name}
 
 %files -n %{libname}
-%{_libdir}/libbasketcommon.so*
+%{_kde_libdir}/libbasketcommon.so*
 
 #--------------------------------------------------------------------
 
@@ -67,7 +68,7 @@ Library files for %{name}
 %patch4 -p0
 
 %build
-%cmake
+%cmake_kde4
 %make
 
 %install
