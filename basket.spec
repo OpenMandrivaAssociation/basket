@@ -1,23 +1,26 @@
+%define git 20081127
+
 %define name           basket
 %define longtitle      BasKet for KDE
-%define version        1.0.3.1
-%define release        %mkrel 1
+# (cg) Note the version is a guess for now :s
+%define version        1.1
+%define release        %mkrel 0.1
 
+%define major 4
+%define libname %mklibname %{name} %{major}
 
 Name:           %name
 Summary:        %longtitle
 Version:        %version
 Release:        %release
 URL:           	http://basket.kde.org/
-Source0:        http://basket.kde.org/downloads/%name-%version.tar.gz
-Patch2:         basket-1.0Beta3-fix-compile.patch 
+Source0:        basket-%{git}.tar.lzma
 Patch3:		basket-1.0-fix-crash.patch
 Patch4:		basket-1.0.2.kontact-plugin.patch
-Patch5: 	basket-1.0.2.fix-automake.patch
 Group:		Office
 BuildRoot:      %{_tmppath}/%{name}-buildroot
 License:	GPLv2+
-BuildRequires:  kdepim-devel
+BuildRequires:  kdepim4-devel
 BuildRequires:  desktop-file-utils
 Requires:	kdebase-progs >= 3.0
 
@@ -35,50 +38,39 @@ It is also useful to collect informations for a report.
 Those data can be shared with co-workers by exporting 
 baskets to HTML.
 
-%if %mdkversion < 200900
-%post
-%update_menus
-%update_icon_cache crystalsvg
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%clean_icon_cache crystalsvg
-%endif
-
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%{_kde3_bindir}/basket
-%_kde3_appsdir/%name
-%_kde3_datadir/services/*.desktop
-%_kde3_datadir/config/magic/*.magic
-%_kde3_datadir/mimelnk/application/*.desktop
-%{_kde3_iconsdir}/*/*/*/*
-%_kde3_datadir/applications/kde/basket.desktop
-%_kde3_datadir/services/kontact/*.desktop
-%_kde3_datadir/apps/kontact/ksettingsdialog/*.setdlg
-%_kde3_libdir/kde3/*
-%_kde3_libdir/*.la
-%_kde3_libdir/*.so
+%{_bindir}/%{name}
+%{_datadir}/apps/%{name}
+%{_datadir}/applications/kde4/%{name}.desktop
+%{_datadir}/kde4/services/*.desktop
+%{_iconsdir}/*/*/*/*
+
+
+%package -n %{libname}
+Summary: Library files for %{name}
+Group:		Office
+
+%description -n %{libname}
+Library files for %{name}
+
+%files -n %{libname}
+%{_libdir}/libbasketcommon.so*
 
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch2 -p0
+%setup -q -n %{name}
 %patch3 -p1 -b .fix_crash
 %patch4 -p0
-%patch5 -p0
 
 %build
-make -f Makefile.cvs
-%configure_kde3 --disable-final
+%cmake
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-%makeinstall_std
+rm -rf %{buildroot}
+%makeinstall_std -C build
 
 %{find_lang} %name --with-html
 
@@ -89,7 +81,7 @@ desktop-file-install --vendor=""\
   --add-category="Qt" \
   --add-category="Office" \
   --add-category="Utility" \
-  --dir $RPM_BUILD_ROOT%{_kde3_datadir}/applications/kde/ $RPM_BUILD_ROOT%{_kde3_datadir}/applications/kde/%{name}.desktop
+  --dir %{buildroot}%{_datadir}/applications/kde4/ %{buildroot}%{_datadir}/applications/kde4/%{name}.desktop
 
 %clean
 rm -rf %buildroot
