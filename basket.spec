@@ -21,6 +21,8 @@ Group:		Office
 BuildRoot:      %{_tmppath}/%{name}-buildroot
 License:	GPLv2+
 BuildRequires:  kdepim4-devel
+BuildRequires:  kdepimlibs4-devel
+BuildRequires:  qimageblitz-devel
 BuildRequires:  desktop-file-utils
 Requires:	kdebase-progs >= 3.0
 
