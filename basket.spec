@@ -4,7 +4,7 @@
 %define longtitle      BasKet for KDE
 # (cg) Note the version is a guess for now :s
 %define version        1.1
-%define release        %mkrel 0.1
+%define release        %mkrel 0.2
 
 %define major 4
 %define libname %mklibname %{name} %{major}
@@ -58,7 +58,7 @@ Group:		Office
 Library files for %{name}
 
 %files -n %{libname}
-%{_kde_libdir}/libbasketcommon.so*
+%{_kde_libdir}/libbasketcommon.so.4*
 
 #--------------------------------------------------------------------
 
@@ -84,7 +84,9 @@ desktop-file-install --vendor=""\
   --add-category="Qt" \
   --add-category="Office" \
   --add-category="Utility" \
-  --dir %{buildroot}%{_datadir}/applications/kde4/ %{buildroot}%{_datadir}/applications/kde4/%{name}.desktop
+  --dir %{buildroot}%{_kde_datadir}/applications/kde4/ %{buildroot}%{_kde_datadir}/applications/kde4/%{name}.desktop
+
+rm -f %buildroot%_kde_libdir/*.so
 
 %clean
 rm -rf %buildroot
