@@ -1,10 +1,10 @@
-%define git 20081127
+%define git 20090102
 
 %define name           basket
 %define longtitle      BasKet for KDE
 # (cg) Note the version is a guess for now :s
 %define version        1.1
-%define release        %mkrel 0.2
+%define release        %mkrel 0.%{git}.1
 
 %define major 4
 %define libname %mklibname %{name} %{major}
@@ -59,6 +59,7 @@ Library files for %{name}
 
 %files -n %{libname}
 %{_kde_libdir}/libbasketcommon.so.4*
+%{_kde_libdir}/kde4/kcm_basket.so
 
 #--------------------------------------------------------------------
 
