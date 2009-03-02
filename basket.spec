@@ -1,4 +1,4 @@
-%define git 20090102
+%define git 20090302
 
 %define name           basket
 %define longtitle      BasKet for KDE
