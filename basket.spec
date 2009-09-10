@@ -4,7 +4,7 @@
 %define longtitle      BasKet for KDE
 # (cg) Note the version is a guess for now :s
 %define version        1.1
-%define release        %mkrel 0.%{git}.1
+%define release        %mkrel 0.%{git}.2
 
 %define major 4
 %define libname %mklibname %{name} %{major}
