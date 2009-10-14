@@ -1,10 +1,10 @@
-%define git 20090302
+%define git 20091014
 
 %define name           basket
 %define longtitle      BasKet for KDE
 # (cg) Note the version is a guess for now :s
 %define version        1.1
-%define release        %mkrel 0.%{git}.2
+%define release        %mkrel 0.%{git}.1
 
 %define major 4
 %define libname %mklibname %{name} %{major}
@@ -15,8 +15,7 @@ Version:        %version
 Release:        %release
 URL:           	http://basket.kde.org/
 Source0:        basket-%{git}.tar.lzma
-Patch3:		basket-1.0-fix-crash.patch
-Patch4:		basket-1.0.2.kontact-plugin.patch
+Patch1:		basket-1.0.2.kontact-plugin.patch
 Group:		Office
 BuildRoot:      %{_tmppath}/%{name}-buildroot
 License:	GPLv2+
@@ -45,6 +44,9 @@ baskets to HTML.
 %{_kde_bindir}/%{name}
 %{_kde_datadir}/apps/%{name}
 %{_kde_datadir}/applications/kde4/%{name}.desktop
+%{_kde_datadir}/config/magic/%{name}.magic
+%{_kde_datadir}/mimelnk/application/x-%{name}-archive.desktop
+%{_kde_datadir}/mimelnk/application/x-%{name}-template.desktop
 %{_kde_datadir}/kde4/services/*.desktop
 %{_kde_iconsdir}/*/*/*/*
 
@@ -59,14 +61,14 @@ Library files for %{name}
 
 %files -n %{libname}
 %{_kde_libdir}/libbasketcommon.so.4*
+%{_kde_libdir}/kde4/basketthumbcreator.so
 %{_kde_libdir}/kde4/kcm_basket.so
 
 #--------------------------------------------------------------------
 
 %prep
 %setup -q -n %{name}
-%patch3 -p1 -b .fix_crash
-%patch4 -p0
+%patch1 -p0
 
 %build
 %cmake_kde4
