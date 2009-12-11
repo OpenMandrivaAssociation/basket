@@ -1,4 +1,4 @@
-%define git 20091014
+%define git 20091211
 
 %define name           basket
 %define longtitle      BasKet for KDE
@@ -15,7 +15,6 @@ Version:        %version
 Release:        %release
 URL:           	http://basket.kde.org/
 Source0:        basket-%{git}.tar.lzma
-Patch1:		basket-1.0.2.kontact-plugin.patch
 Group:		Office
 BuildRoot:      %{_tmppath}/%{name}-buildroot
 License:	GPLv2+
@@ -68,7 +67,6 @@ Library files for %{name}
 
 %prep
 %setup -q -n %{name}
-%patch1 -p0
 
 %build
 %cmake_kde4
