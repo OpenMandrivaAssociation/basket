@@ -18,7 +18,7 @@ BuildRequires:  qimageblitz-devel
 BuildRequires:  desktop-file-utils
 Requires:       kdebase4-runtime
 
-conflicts:      %{libname} < 1.80-2
+conflicts:      %{_lib}%{name}4 < 1.80-2
 
 %description
 This application is mainly an all-purpose notes taker. 
@@ -55,8 +55,8 @@ baskets to HTML.
 %package -n %{libbasketcommon}
 Summary: Library files for %{name}
 Group:      Office
-Obsoletes:  %{_lib}%{name} < 1.80-2
-Provides:   %{_lib}%{name} < 1.80-2
+Obsoletes:  %{_lib}%{name}4 < 1.80-2
+Provides:   %{_lib}%{name}4 < 1.80-2
 
 %description -n %{libbasketcommon}
 Library files for %{name}
