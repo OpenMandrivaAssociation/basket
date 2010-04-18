@@ -1,10 +1,7 @@
 %define name           basket
 %define longtitle      BasKet for KDE
 %define version        1.80
-%define release        %mkrel 1
-
-%define major 4
-%define libname %mklibname %{name} %{major}
+%define release        %mkrel 2
 
 Name:           %name
 Summary:        %longtitle
@@ -52,15 +49,20 @@ baskets to HTML.
 
 #--------------------------------------------------------------------
 
-%package -n %{libname}
+%define basketcommon_major 4
+%define libbasketcommon %mklibname basketcommon %{basketcommon_major}
+
+%package -n %{libbasketcommon}
 Summary: Library files for %{name}
 Group:      Office
+Obsoletes:  %{_lib}%{name} < 1.80-2
+Provides:   %{_lib}%{name} < 1.80-2
 
-%description -n %{libname}
+%description -n %{libbasketcommon}
 Library files for %{name}
 
-%files -n %{libname}
-%{_kde_libdir}/libbasketcommon.so.4*
+%files -n %{libbasketcommon}
+%{_kde_libdir}/libbasketcommon.so.%{basketcommon_major}*
 
 #--------------------------------------------------------------------
 
