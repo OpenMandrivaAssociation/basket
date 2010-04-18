@@ -21,6 +21,8 @@ BuildRequires:  qimageblitz-devel
 BuildRequires:  desktop-file-utils
 Requires:       kdebase4-runtime
 
+conflicts:      %{libname} < 1.80-2
+
 %description
 This application is mainly an all-purpose notes taker. 
 It provide several baskets where to drop every sort of 
@@ -45,6 +47,8 @@ baskets to HTML.
 %{_kde_datadir}/mimelnk/application/x-%{name}-template.desktop
 %{_kde_datadir}/kde4/services/*.desktop
 %{_kde_iconsdir}/*/*/*/*
+%{_kde_libdir}/kde4/basketthumbcreator.so
+%{_kde_libdir}/kde4/kcm_basket.so
 
 #--------------------------------------------------------------------
 
@@ -57,8 +61,6 @@ Library files for %{name}
 
 %files -n %{libname}
 %{_kde_libdir}/libbasketcommon.so.4*
-%{_kde_libdir}/kde4/basketthumbcreator.so
-%{_kde_libdir}/kde4/kcm_basket.so
 
 #--------------------------------------------------------------------
 
