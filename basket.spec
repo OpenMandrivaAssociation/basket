@@ -38,7 +38,7 @@ baskets to HTML.
 %defattr(-,root,root,-)
 %{_kde_bindir}/%{name}
 %{_kde_appsdir}/%{name}
-%{_kde_applicationsdir}/kde4/%{name}.desktop
+%{_kde_applicationsdir}/%{name}.desktop
 %{_kde_datadir}/config/magic/%{name}.magic
 %{_kde_datadir}/mimelnk/application/x-%{name}-archive.desktop
 %{_kde_datadir}/mimelnk/application/x-%{name}-template.desktop
