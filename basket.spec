@@ -86,5 +86,10 @@ desktop-file-install --vendor=""\
 
 rm -f %buildroot%_kde_libdir/*.so
 
+%check
+for f in %{buildroot}%{_kde_datadir}/applications/kde4/*.desktop ; do
+     desktop-file-validate $f
+done 
+
 %clean
 rm -rf %buildroot
