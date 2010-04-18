@@ -44,8 +44,11 @@ baskets to HTML.
 %{_kde_datadir}/mimelnk/application/x-%{name}-template.desktop
 %{_kde_datadir}/kde4/services/*.desktop
 %{_kde_iconsdir}/*/*/*/*
+%{_kde_datadir}/kde4/services/kontact/basket_plugin.desktop
 %{_kde_libdir}/kde4/basketthumbcreator.so
 %{_kde_libdir}/kde4/kcm_basket.so
+%{_kde_libdir}/kde4/kontact_basketplugin.so
+%{_kde_libdir}/kde4/libbasketpart.so
 
 #--------------------------------------------------------------------
 
@@ -70,7 +73,7 @@ Library files for %{name}
 %setup -q -n %{name}-%{version}
 
 %build
-%cmake_kde4
+%cmake_kde4 -DBUILD_KPARTS=1
 %make
 
 %install
