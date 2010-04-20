@@ -56,7 +56,7 @@ baskets to HTML.
 %define libbasketcommon %mklibname basketcommon %{basketcommon_major}
 
 %package -n %{libbasketcommon}
-Summary: Library files for %{name}
+Summary:    Library files for %{name}
 Group:      Office
 Obsoletes:  %{_lib}%{name}4 < 1.80-2
 Provides:   %{_lib}%{name}4 < 1.80-2
