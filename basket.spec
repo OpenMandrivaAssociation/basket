@@ -1,7 +1,7 @@
 %define name           basket
 %define longtitle      BasKet for KDE
 %define version        1.80
-%define release        %mkrel 2
+%define release        %mkrel 3
 
 Name:           %name
 Summary:        %longtitle
@@ -59,7 +59,7 @@ baskets to HTML.
 Summary:    Library files for %{name}
 Group:      Office
 Obsoletes:  %{_lib}%{name}4 < 1.80-2
-Provides:   %{_lib}%{name}4 < 1.80-2
+Provides:   %{_lib}%{name}4 = %version-%release
 
 %description -n %{libbasketcommon}
 Library files for %{name}
