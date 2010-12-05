@@ -1,7 +1,7 @@
 %define name           basket
 %define longtitle      BasKet for KDE
 %define version        1.80
-%define release        %mkrel 3
+%define release        %mkrel 4
 
 Name:           %name
 Summary:        %longtitle
