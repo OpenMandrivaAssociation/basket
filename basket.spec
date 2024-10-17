@@ -7,7 +7,7 @@ Name:           %name
 Summary:        %longtitle
 Version:        %version
 Release:        %release
-URL:            http://basket.kde.org/
+URL:            https://basket.kde.org/
 Source0:        http://basket.kde.org/downloads/%{name}-%{version}.tar.bz2
 Group:          Office
 BuildRoot:      %{_tmppath}/%{name}-buildroot
